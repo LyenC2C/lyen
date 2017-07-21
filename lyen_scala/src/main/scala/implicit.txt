@@ -1,0 +1,36 @@
+A::::隐式
+1.隐式转换 -> vip
+2.隐式参数 -> vip
+3.隐式类
+4.隐式对象
+5.隐式函数 ->vip
+a.一般都在伴生对象中写隐式转换
+
+B::::并发
+java ->Thread->共享全局变量加锁机制
+scala ->Actor->
+
+
+case class Basic_info(name: String, age: Int)
+
+case class Worker_info(name: String, age: Int)
+
+class BasiceActor extends Actor {
+  override def act() = {
+    while (true) {
+      //receive 偏函数
+      receive {
+        case Basic_info(name, age) => println("basic information" + name + age)
+        case Worker_info(name, age) => println("basic information" + name + age)
+      }
+    }
+  }
+
+}
+object BasiceActor{
+  def main(args: Array[String]): Unit = {
+    val actor = new BasiceActor()
+    actor.start()
+    actor ! Basic_info("lyen",22)
+  }
+}

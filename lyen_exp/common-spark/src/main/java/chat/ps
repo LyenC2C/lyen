@@ -1,0 +1,8 @@
+1.ServerBootStrop->负责初始化netty服务器，并且开始监听端口的socket请求
+2.EventLoop->为Channel处理IO操作，一个EventLoop可以为多个Channel服务
+3.EventLoopGroup->包含多个EventLoop
+4.Channel->代表一个Socket链接，或者其它和IO操作相关的组件，它和EventLoop一起用来参与IO处理。
+5.Future->在Netty中所有的IO操作都是异步的，因此，你不能立刻得知消息是否被正确处理，
+但是我们可以过一会等它执行完成或者直接注册一个监听，具体的实现就是通过Future和ChannelFutures,
+他们可以注册一个监听，当操作执行成功或失败时监听会自动触发。总之，所有的操作都会返回一个ChannelFuture。
+6.Handler->主要用来处理各种事件，这里的事件很广泛，比如可以是连接、数据接收、异常、数据转换等。
