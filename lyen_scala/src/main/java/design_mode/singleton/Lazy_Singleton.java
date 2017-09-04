@@ -13,6 +13,7 @@ public class Lazy_Singleton {
     //加入了synchronized但是在多线程编程中耗时要高一些
     private static Lazy_Singleton instance = null;
 
+    //Double Check
     public static Lazy_Singleton getInstance() {
         if (instance == null) {
             synchronized(Lazy_Singleton.class) {
