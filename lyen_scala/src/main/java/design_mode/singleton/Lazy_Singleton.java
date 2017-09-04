@@ -13,11 +13,14 @@ public class Lazy_Singleton {
     //加入了synchronized但是在多线程编程中耗时要高一些
     private static Lazy_Singleton instance = null;
 
-    public static synchronized Lazy_Singleton getInstance() {
+    public static Lazy_Singleton getInstance() {
         if (instance == null) {
-            instance = new Lazy_Singleton();
+            synchronized(Lazy_Singleton.class) {
+                if (instance == null) {
+                    instance = new Lazy_Singleton();
+                }
+            }
         }
         return instance;
-
     }
 }
